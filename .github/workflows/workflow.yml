@@ -2,7 +2,7 @@ name: test-git-migration
 on:
   push:
     branches:
-      - master
+      - main
       - feature
       - release
 
@@ -14,8 +14,8 @@ jobs:
 
         - name: Checking branch
           run: |
-            if [[ "${GITHUB_REF}" == refs/heads/master ]]; then
-                echo "The push has been done from master branch"
+            if [[ "${GITHUB_REF}" == refs/heads/main ]]; then
+                echo "The push has been done from main branch"
             elif [[ "${GITHUB_REF}" == "refs/heads/feature" ]]; then
                 echo "The push has been done from feature branch"
             elif [[ "${GITHUB_REF}" == "refs/heads/release" ]]; then
