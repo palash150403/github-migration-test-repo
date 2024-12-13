@@ -7,19 +7,30 @@ on:
       - release
 
 jobs:
-    build:
+    build-main:
       runs-on: ubuntu-latest
-
+      if: github.ref == 'refs/heads/main'
       steps:
-
-        - name: Checking branch
+        - name: main branch
           run: |
-            if [[ "${GITHUB_REF}" == refs/heads/main ]]; then
-                echo "The push has been done from main branch"
-            elif [[ "${GITHUB_REF}" == "refs/heads/feature" ]]; then
-                echo "The push has been done from feature branch"
-            elif [[ "${GITHUB_REF}" == "refs/heads/release" ]]; then
-                echo "The push has been done from release branch"
-            else
-                exit 1
-            fi
+            echo "The push has been done from main branch"
+   
+
+
+    build-feature:
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/feature'
+      steps:
+        - name: feature branch
+          run: |
+            echo "The push has been done from feature branch"
+
+
+
+    build-release:
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/release'
+      steps:
+        - name: release branch
+          run: |
+            echo "The push has been done from release branch"
